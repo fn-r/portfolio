@@ -3673,9 +3673,9 @@ const more = [
 more.forEach(word => words.push(word))
 
 let box_tl = gsap.timeline()
-box_tl.from(btns, {y: '100vw', duration: 1, ease: 'back'})
-        .from('.hi', {duration: 1.5, y:'7vw', ease: 'power3.out', onComplete: () => main_tl.play()})
-        .to('.cursor', {opacity: 100, ease: 'power1.inOut', repeat: -1}, '-=0.5')
+box_tl.from(btns, {y: '100vw', duration: 1, stagger: 0.5, ease: 'back'})
+        .from('.hi', {duration: 1.5, y:'7vw', ease: 'power3.out', onComplete: () => main_tl.play()}, '-=0.3')
+        .from('.cursor', {opacity: 0, repeat: -1, ease: 'power1.inOut', repeatDelay: 0.4})
 
 let main_tl = gsap.timeline({repeat: -1}).pause()
 words.forEach(word => {

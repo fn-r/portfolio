@@ -2657,7 +2657,9 @@ h2 .hi {
 }
 
 h2 .cursor {
-    opacity: 0;
+    border: 2px solid white;
+    border-top: 0;
+    border-bottom: 0;
 }
 
 #contact form {
