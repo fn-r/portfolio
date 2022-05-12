@@ -9,19 +9,22 @@
 </p>
 
 ## About
-My portfolio repository where I focused more on responsive UI. Would optimize this project to add animations to some elements.
+My portfolio site including working links to my projects and how to get in touch with me.
 
 <a target="_blank" href="https://farahn.netlify.app/">
     <img src="https://github.com/fn-r/portfolio/blob/main/images/gif/portfolio.gif" width="100%" alt="Portfolio"/>
 </a>
 
 ## Optimizations
-Added animation by using GSAP plugins. I have also change the layout for the contact form.
+- I made some improvement on the animation based on different screen size. On a large screen, the animation are stagger for each project images. On small screen, the animation are triggered when each project image came into view.
+- Used ParticlesJS for header background.
+
+Would like to add animation on each navigation links next.
 
 ## Technology Stack
-![HTML5 BADGE](https://img.shields.io/static/v1?label=|&message=HTML5&color=23555f&style=plastic&logo=html5)
-![CSS BADGE](https://img.shields.io/static/v1?label=|&message=CSS3&color=285f65&style=plastic&logo=css3)
-![JAVASCRIPT BADGE](https://img.shields.io/static/v1?label=|&message=JAVASCRIPT&color=3c7f5d&style=plastic&logo=javascript)
+![HTML BADGE](https://custom-icon-badges.herokuapp.com/badge/-html-A5FFCE?style=for-the-badge&logo=html5&logoColor=A5FFCE&labelColor=000000) 
+![CSS BADGE](https://custom-icon-badges.herokuapp.com/badge/-css-A5FFCE?style=for-the-badge&logo=css3&logoColor=A5FFCE&labelColor=000000) 
+![JAVASCRIPT BADGE](https://custom-icon-badges.herokuapp.com/badge/-javascript-A5FFCE?style=for-the-badge&logo=javascript&logoColor=A5FFCE&labelColor=000000)
 
 ## Lesson Learned
 - Separation of concern:

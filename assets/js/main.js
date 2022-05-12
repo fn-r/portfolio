@@ -3673,13 +3673,34 @@ const more = [
 more.forEach(word => words.push(word))
 
 let box_tl = gsap.timeline()
-box_tl.from(btns, {y: '100vw', duration: 1, stagger: 0.5, ease: 'back'})
-        .from('.hi', {duration: 1.5, y:'7vw', ease: 'power3.out', onComplete: () => main_tl.play()}, '-=0.3')
-        .from('.cursor', {opacity: 0, repeat: -1, ease: 'power1.inOut', repeatDelay: 0.4})
+box_tl.from(btns, {
+        y: '100vw',
+        duration: 1,
+        stagger: 0.5,
+        ease: 'back'
+    })
+    .from('.hi', {
+        duration: 1.5,
+        y: '7vw',
+        ease: 'power3.out',
+        onComplete: () => main_tl.play()
+    }, '-=0.3')
+    .from('.cursor', {
+        opacity: 0,
+        repeat: -1,
+        ease: 'power1.inOut',
+        repeatDelay: 0.4
+    })
 
-let main_tl = gsap.timeline({repeat: -1}).pause()
+let main_tl = gsap.timeline({
+    repeat: -1
+}).pause()
 words.forEach(word => {
-    let tl = gsap.timeline({repeat: 1, yoyo: true, repeatDelay: 2})
+    let tl = gsap.timeline({
+        repeat: 1,
+        yoyo: true,
+        repeatDelay: 2
+    })
     tl.to('.text strong', {
         duration: 1,
         text: word
@@ -3692,23 +3713,171 @@ const defaults = {
         toggleActions: 'restart none restart reset'
     },
     duration: 1,
-    y: '7vh',
+    y: '45vh',
 }
 
-defaults.scrollTrigger.trigger = '[js-anim-img-1]'
-gsap.from('[js-anim-img-1]', defaults)
+//important to do this BEFORE ScrollTriggers are created
+ScrollTrigger.saveStyles('[js-anim*="img"]')
+ScrollTrigger.matchMedia({
 
-defaults.scrollTrigger.trigger = '[js-anim-img-2]'
-gsap.from('[js-anim-img-2]', defaults)
+    // desktop
+    "(min-width: 737px)": function () {
+        let portfolios = document.querySelectorAll('[js-anim*="img"]')
+        let temp = []
+        //sort portfolios animation
+        portfolios = Array.from(portfolios)
+        temp = portfolios[1]
+        portfolios[1] = portfolios[2]
+        portfolios[2] = temp
 
-defaults.scrollTrigger.trigger = '[js-anim-img-3]'
-gsap.from('[js-anim-img-3]', defaults)
+        defaults.scrollTrigger.trigger = '#portfolio'
+        defaults.stagger = 0.2
+        gsap.from(portfolios, defaults)
+    },
 
-defaults.scrollTrigger.trigger = '[js-anim-img-4]'
-gsap.from('[js-anim-img-4]', defaults)
+    // small screen
+    "(max-width: 736px)": function () {
+        const portfolios = document.querySelectorAll('[js-anim*="img"]')
+        Array.from(portfolios).forEach(portfolio => {
+            defaults.scrollTrigger.trigger = portfolio
+            defaults.y = '7vh',
+                gsap.from(portfolio, defaults)
+        })
+    }
+});
 
-defaults.y = '45vh'
-defaults.ease = 'back'
+defaults.y = '45vh',
+    defaults.ease = 'back'
 defaults.scrollTrigger.trigger = '[js-anim-form-trigger]'
 defaults.scrollTrigger.toggleActions = 'restart none none reset'
 gsap.from('[js-anim-form]', defaults)
+
+particlesJS("top", {
+    "particles": {
+        "number": {
+            "value": 80,
+            "density": {
+                "enable": true,
+                "value_area": 800
+            }
+        },
+        "color": {
+            "value": "#ffffff"
+        },
+        "shape": {
+            "type": "image",
+            "stroke": {
+                "width": 0,
+                "color": "#000000"
+            },
+            "polygon": {
+                "nb_sides": 5
+            },
+            "image": {
+                "src": "https://res.cloudinary.com/naker-io/image/upload/v1566560053/window_04.png",
+                "width": 512,
+                "height": 512
+            }
+        },
+        "opacity": {
+            "value": 0.5,
+            "random": false,
+            "anim": {
+                "enable": false,
+                "speed": 1,
+                "opacity_min": 0.1,
+                "sync": false
+            }
+        },
+        "size": {
+            "value": 30,
+            "random": true,
+            "anim": {
+                "enable": false,
+                "speed": 40,
+                "size_min": 0.1,
+                "sync": false
+            }
+        },
+        "line_linked": {
+            "enable": false,
+            "distance": 150,
+            "color": "#ffffff",
+            "opacity": 0.4,
+            "width": 1
+        },
+        "move": {
+            "enable": true,
+            "speed": 6,
+            "direction": "none",
+            "random": false,
+            "straight": false,
+            "out_mode": "out",
+            "bounce": false,
+            "attract": {
+                "enable": false,
+                "rotateX": 600,
+                "rotateY": 1200
+            }
+        }
+    },
+    "interactivity": {
+        "detect_on": "canvas",
+        "events": {
+            "onhover": {
+                "enable": true,
+                "mode": "bubble"
+            },
+            "onclick": {
+                "enable": true,
+                "mode": "push"
+            },
+            "resize": true
+        },
+        "modes": {
+            "grab": {
+                "distance": 400,
+                "line_linked": {
+                    "opacity": 1
+                }
+            },
+            "bubble": {
+                "distance": 200,
+                "size": 40,
+                "duration": 2,
+                "opacity": 8,
+                "speed": 3
+            },
+            "repulse": {
+                "distance": 50,
+                "duration": 2
+            },
+            "push": {
+                "particles_nb": 4
+            },
+            "remove": {
+                "particles_nb": 2
+            }
+        }
+    },
+    "retina_detect": true
+});
+var count_particles, stats, update;
+stats = new Stats;
+stats.setMode(0);
+stats.domElement.style.position = 'absolute';
+stats.domElement.style.left = '0px';
+stats.domElement.style.top = '0px';
+stats.domElement.style.overflow = 'hidden';
+stats.domElement.style['z-index'] = -1;
+document.body.appendChild(stats.domElement);
+count_particles = document.querySelector('.js-count-particles');
+update = function () {
+    stats.begin();
+    stats.end();
+    if (window.pJSDom[0].pJS.particles && window.pJSDom[0].pJS.particles.array) {
+        count_particles.innerText = window.pJSDom[0].pJS.particles.array.length;
+    }
+    requestAnimationFrame(update);
+};
+requestAnimationFrame(update);;
