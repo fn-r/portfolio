@@ -1,4 +1,5 @@
 [[redirects]]
-  from = "/*"
-  to = "https://farah-nadhirah.netlify.app/"
-  status = 200
+  from = "https://farahn.netlify.app/*"
+  to = "https://farah-nadhirah.netlify.app/:splat"
+  status = 301
+  force = true
