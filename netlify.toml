@@ -1,0 +1,4 @@
+[[redirects]]
+  from = "/*"
+  to = "https://farah-nadhirah.netlify.app/"
+  status = 200
